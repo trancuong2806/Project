@@ -9,8 +9,8 @@
 - Việc chạy các file này có thể gây **hại cho máy tính, mất dữ liệu, hoặc vi phạm quyền riêng tư**.  
 - Running these files may cause **damage to your computer, data loss, or privacy risks**.  
 
-- **Chỉ chạy file nếu bạn hoàn toàn hiểu rõ mã nguồn và chịu trách nhiệm về kết quả.**  
-- **Only run files if you fully understand the source code and take full responsibility for the outcomes.**
+- **Chỉ chạy file nếu bạn hoàn toàn hiểu rõ mã nguồn và chịu trách nhiệm về hậu quả.**  
+- **Only run the file if you fully understand the source code and are responsible for the consequences.**
 
 ---
 
