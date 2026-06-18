@@ -24,6 +24,7 @@ import math
 import urllib.request
 import urllib.error
 import base64
+import ctypes
 
 # ============================
 # CAU HINH
