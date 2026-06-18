@@ -29,6 +29,7 @@ import ctypes
 # ============================
 # CAU HINH
 # ============================
+
 SERVER_ID         = f"{uuid.getnode()}-{os.getpid()}"
 TOKEN_URL         = ""
 PREFIX            = f"!{SERVER_ID}"
@@ -47,12 +48,14 @@ ALLOWED_USER_IDS  = [int(x.strip()) for x in _raw_ids.split(",") if x.strip().is
 # ============================
 # GLOBAL STATE
 # ============================
+
 task_registry: dict[str, dict] = {}
 process_semaphore: asyncio.Semaphore = None
 
 # ============================
 # BOT INIT
 # ============================
+
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix=[f"{PREFIX} ", PREFIX], intents=intents, help_command=None)
